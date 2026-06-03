@@ -3,67 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Página no GitHub</title>
+    <title>Agrinho 2026 - Conexão e Inovação</title>
     <style>
-        /* Estilos básicos para deixar a página bonita */
+        :root {
+            --verde-escuro: #1b5e20;
+            --verde-principal: #2e7d32;
+            --verde-claro: #a5d6a7;
+            --fundo: #f4f9f4;
+            --texto: #2c3e50;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
+            background-color: var(--fundo);
+            color: var(--texto);
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--verde-escuro), var(--verde-principal));
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.3em;
+            opacity: 0.9;
         }
 
         .container {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
         }
 
-        h1 {
-            color: #24292e; /* Cor padrão do GitHub */
-            margin-bottom: 10px;
+        /* Sistema de Abas Interativas */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
         }
 
-        p {
-            font-size: 1.1em;
-            color: #586069;
-            line-height: 1.6;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #2ea44f; /* Verde de sucesso do GitHub */
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
+        .tab-btn {
+            background-color: white;
+            border: 2px solid var(--verde-principal);
+            color: var(--verde-principal);
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 1em;
             font-weight: bold;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--verde-principal);
+            color: white;
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Estilo do Quiz Interativo */
+        .quiz-container {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 6px solid var(--verde-principal);
+            margin-top: 20px;
+        }
+
+        .quiz-options button {
+            display: block;
+            width: 100%;
+            background: white;
+            border: 1px solid var(--verde-claro);
+            padding: 12px;
+            margin: 8px 0;
+            text-align: left;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
             transition: background 0.2s;
         }
 
-        .btn:hover {
-            background-color: #2c974b;
+        .quiz-options button:hover {
+            background: var(--verde-claro);
+        }
+
+        #quiz-result {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        /* Animação simples */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            background-color: var(--verde-escuro);
+            color: white;
         }
     </style>
 </head>
 <body>
 
+    <header>
+        <h1>Agrinho 2026 🌾</h1>
+        <p>Inovação Pedagógica e Sustentabilidade Digital</p>
+    </header>
+
     <div class="container">
-        <h1>Olá, Mundo! 🚀</h1>
-        <p>Esta é a minha primeira página hospedada diretamente no GitHub Pages.</p>
-        <p>Você pode editar este arquivo para colocar o conteúdo que quiser.</p>
-        <a href="https://github.com" target="_blank" class="btn">Visitar meu GitHub</a>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'projeto')">O Projeto</button>
+            <button class="tab-btn" onclick="openTab(event, 'tecnologia')">Tecnologia no Campo</button>
+            <button class="tab-btn" onclick="openTab(event, 'interativo')">Desafio Interativo</button>
+        </div>
+
+        <div id="projeto" class="tab-content active">
+            <h2>Nossa Proposta para o Agrinho 2026</h2>
+            <p>Escreva aqui a descrição detalhada do tema escolhido pela sua turma ou escola para o ano de 2026. Destaque quais foram as metodologias e os problemas reais da comunidade que vocês buscaram solucionar.</p>
+            <p><strong>Escola:</strong> Nome da Sua Instituição<br>
+            <strong>Integrantes:</strong> Nome dos Alunos e Orientadores.</p>
+        </div>
+
+        <div id="tecnologia" class="tab-content">
+            <h2>A Importância da Tecnologia no Agro</h2>
+            <p>O campo está cada vez mais conectado. O uso de automação, inteligência artificial, sensores e páginas web (como esta) ajudam a disseminar práticas sustentáveis, economizar recursos como a água e melhorar a produção de alimentos de forma limpa.</p>
+        </div>
+
+        <div id="interativo" class="tab-content">
+            <h2>Teste seus Conhecimentos!</h2>
+            <p>Criamos este pequeno simulado interativo para testar o que as pessoas sabem sobre a sustentabilidade no campo.</p>
+            
+            <div class="quiz-container">
+                <p id="quiz-question"><strong>Pergunta:</strong> Qual das práticas abaixo ajuda a economizar água na agricultura tradicional?</p>
+                <div class="quiz-options">
+                    <button onclick="checkAnswer(false)">A) Irrigação contínua por inundação em horários de sol forte.</button>
+                    <button onclick="checkAnswer(true)">B) Uso de irrigação por gotejamento direto na raiz da planta.</button>
+                    <button onclick="checkAnswer(false)">C) Retirada total da cobertura morta do solo.</button>
+                </div>
+                <div id="quiz-result"></div>
+            </div>
+        </div>
+
     </div>
 
+    <footer>
+        <p>© 2026 Projeto Agrinho - Desenvolvido no GitHub Pages</p>
+    </footer>
+
+    <script>
+        // Função para alternar entre as abas
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Função para validar a resposta do Quiz
+        function checkAnswer(isCorrect) {
+            var resultDiv = document.getElementById("quiz-result");
+            if (isCorrect) {
+                resultDiv.innerHTML = "🎉 Correto! O gotejamento evita a evaporação excessiva e direciona a água onde ela é necessária.";
+                resultDiv.style.color = "#2e7d32";
+            } else {
+                resultDiv.innerHTML = "❌ Tente novamente! Essa prática pode gerar desperdício ou prejudicar o solo.";
+                resultDiv.style.color = "#d32f2f";
+            }
+        }
+    </script>
 </body>
 </html>
