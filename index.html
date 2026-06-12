@@ -6,39 +6,41 @@
     <title>Agrinho 2026 - Conexão e Inovação</title>
     <style>
         :root {
-            --verde-escuro: #1b5e20;
-            --verde-principal: #2e7d32;
-            --verde-claro: #a5d6a7;
-            --fundo: #f4f9f4;
-            --texto: #2c3e50;
+            --verde-suave: #7bb87a;
+            --verde-escuro: #276a38;
+            --terra-cota: #d98344;
+            --fundo-claro: #faf9f6;
+            --texto-suave: #3a4b3d;
+            --branco: #ffffff;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--fundo);
-            color: var(--texto);
+            background-color: var(--fundo-claro);
+            color: var(--texto-suave);
             margin: 0;
             padding: 0;
         }
 
         header {
-            background: linear-gradient(135deg, var(--verde-escuro), var(--verde-principal));
+            background: linear-gradient(135deg, var(--verde-escuro), var(--verde-suave));
             color: white;
             text-align: center;
-            padding: 50px 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 60px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.8em;
-            letter-spacing: 1px;
+            font-size: 3em;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         header p {
-            margin-top: 10px;
+            margin-top: 15px;
             font-size: 1.3em;
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         .container {
@@ -51,75 +53,96 @@
         .tabs {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 15px;
+            margin-bottom: 35px;
         }
 
         .tab-btn {
-            background-color: white;
-            border: 2px solid var(--verde-principal);
-            color: var(--verde-principal);
+            background-color: var(--branco);
+            border: 2px solid var(--verde-suave);
+            color: var(--verde-escuro);
             padding: 12px 24px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.1em;
             font-weight: bold;
             border-radius: 25px;
             transition: all 0.3s ease;
         }
 
         .tab-btn.active, .tab-btn:hover {
-            background-color: var(--verde-principal);
+            background-color: var(--verde-escuro);
             color: white;
-            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+            border-color: var(--verde-escuro);
+            box-shadow: 0 4px 12px rgba(39, 106, 56, 0.3);
         }
 
         .tab-content {
             display: none;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: var(--branco);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             animation: fadeIn 0.5s ease;
+            line-height: 1.7;
         }
 
         .tab-content.active {
             display: block;
         }
 
+        .tab-content h2 {
+            color: var(--verde-escuro);
+            margin-top: 0;
+        }
+
+        /* Imagens e Estilos Visuais */
+        .img-destaque {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
         /* Estilo do Quiz Interativo */
         .quiz-container {
-            background: #e8f5e9;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 6px solid var(--verde-principal);
-            margin-top: 20px;
+            background: #f1faee;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 8px solid var(--terra-cota);
+            margin-top: 25px;
         }
 
         .quiz-options button {
             display: block;
             width: 100%;
-            background: white;
-            border: 1px solid var(--verde-claro);
-            padding: 12px;
-            margin: 8px 0;
+            background: var(--branco);
+            border: 1px solid var(--verde-suave);
+            padding: 15px;
+            margin: 12px 0;
             text-align: left;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1em;
-            transition: background 0.2s;
+            font-size: 1.05em;
+            color: var(--texto-suave);
+            transition: all 0.2s ease;
         }
 
         .quiz-options button:hover {
-            background: var(--verde-claro);
+            background: rgba(123, 184, 122, 0.2);
+            border-color: var(--verde-escuro);
         }
 
         #quiz-result {
-            margin-top: 15px;
+            margin-top: 20px;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            padding: 10px;
+            border-radius: 6px;
+            display: none;
         }
 
-        /* Animação simples */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -127,22 +150,20 @@
 
         footer {
             text-align: center;
-            padding: 30px;
-            margin-top: 60px;
+            padding: 40px;
+            margin-top: 80px;
             background-color: var(--verde-escuro);
             color: white;
         }
     </style>
 </head>
 <body>
-
     <header>
         <h1>Agrinho 2026 🌾</h1>
-        <p>Inovação Pedagógica e Sustentabilidade Digital</p>
+        <p>Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente</p>
     </header>
 
     <div class="container">
-        
         <div class="tabs">
             <button class="tab-btn active" onclick="openTab(event, 'projeto')">O Projeto</button>
             <button class="tab-btn" onclick="openTab(event, 'tecnologia')">Tecnologia no Campo</button>
@@ -151,31 +172,37 @@
 
         <div id="projeto" class="tab-content active">
             <h2>Nossa Proposta para o Agrinho 2026</h2>
-            <p>Escreva aqui a descrição detalhada do tema escolhido pela sua turma ou escola para o ano de 2026. Destaque quais foram as metodologias e os problemas reais da comunidade que vocês buscaram solucionar.</p>
+            <p>Neste ano, o tema central do Agrinho nos desafia a refletir sobre como podemos produzir alimentos de qualidade preservando a natureza. Nossa turma buscou mapear as principais necessidades da nossa comunidade local, desenvolvendo práticas que unem inovação e sustentabilidade.</p>
+            
+            <img src="https://unsplash.com" alt="Plantação verde e sustentável" class="img-destaque">
+
             <p><strong>Escola:</strong> Nome da Sua Instituição<br>
             <strong>Integrantes:</strong> Nome dos Alunos e Orientadores.</p>
         </div>
 
         <div id="tecnologia" class="tab-content">
             <h2>A Importância da Tecnologia no Agro</h2>
-            <p>O campo está cada vez mais conectado. O uso de automação, inteligência artificial, sensores e páginas web (como esta) ajudam a disseminar práticas sustentáveis, economizar recursos como a água e melhorar a produção de alimentos de forma limpa.</p>
+            <p>O campo está cada vez mais conectado! O uso de automação, Inteligência Artificial, sensores inteligentes e métodos sustentáveis ajudam a economizar recursos vitais como a água e aumentam a produtividade de forma limpa.</p>
+
+            <img src="https://unsplash.com" alt="Tecnologia e inovação no campo" class="img-destaque">
+
+            <p>Através da inovação pedagógica, mostramos que é possível garantir a segurança alimentar sem esquecer a responsabilidade com o meio ambiente e com o futuro do nosso planeta.</p>
         </div>
 
         <div id="interativo" class="tab-content">
             <h2>Teste seus Conhecimentos!</h2>
-            <p>Criamos este pequeno simulado interativo para testar o que as pessoas sabem sobre a sustentabilidade no campo.</p>
+            <p>Criamos este pequeno simulado interativo para testar o que as pessoas sabem sobre a sustentabilidade e a produção no campo.</p>
             
             <div class="quiz-container">
-                <p id="quiz-question"><strong>Pergunta:</strong> Qual das práticas abaixo ajuda a economizar água na agricultura tradicional?</p>
+                <p id="quiz-question"><strong>Pergunta:</strong> Qual das práticas abaixo ajuda diretamente a economizar água na agricultura e manter o solo saudável?</p>
                 <div class="quiz-options">
                     <button onclick="checkAnswer(false)">A) Irrigação contínua por inundação em horários de sol forte.</button>
                     <button onclick="checkAnswer(true)">B) Uso de irrigação por gotejamento direto na raiz da planta.</button>
-                    <button onclick="checkAnswer(false)">C) Retirada total da cobertura morta do solo.</button>
+                    <button onclick="checkAnswer(false)">C) Retirada total da cobertura vegetal morta do solo.</button>
                 </div>
                 <div id="quiz-result"></div>
             </div>
         </div>
-
     </div>
 
     <footer>
@@ -183,7 +210,6 @@
     </footer>
 
     <script>
-        // Função para alternar entre as abas
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             
@@ -201,15 +227,18 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // Função para validar a resposta do Quiz
         function checkAnswer(isCorrect) {
             var resultDiv = document.getElementById("quiz-result");
+            resultDiv.style.display = "block";
+            
             if (isCorrect) {
-                resultDiv.innerHTML = "🎉 Correto! O gotejamento evita a evaporação excessiva e direciona a água onde ela é necessária.";
-                resultDiv.style.color = "#2e7d32";
+                resultDiv.innerHTML = "🎉 Correto! O gotejamento evita a evaporação excessiva e direciona a água exatamente onde a planta necessita.";
+                resultDiv.style.color = "#276a38";
+                resultDiv.style.backgroundColor = "#d4edda";
             } else {
-                resultDiv.innerHTML = "❌ Tente novamente! Essa prática pode gerar desperdício ou prejudicar o solo.";
-                resultDiv.style.color = "#d32f2f";
+                resultDiv.innerHTML = "❌ Tente novamente! Essa prática pode gerar grande desperdício ou prejudicar a qualidade do solo.";
+                resultDiv.style.color = "#a52a2a";
+                resultDiv.style.backgroundColor = "#f8d7da";
             }
         }
     </script>
