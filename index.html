@@ -26,57 +26,7 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             overflow-x: hidden;
-        }
-
-        /* Efeito de carregamento / Imagem Agrícola Inicial */
-        .intro-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://unsplash.com') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            color: white;
-            transition: opacity 1s ease, visibility 1s;
-        }
-
-        .intro-overlay.fade-out {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .intro-box {
-            text-align: center;
-            padding: 30px;
-            border: 3px solid var(--light-green);
-            background: rgba(27, 67, 50, 0.85);
-            border-radius: 15px;
-            max-width: 600px;
-            margin: 20px;
-        }
-
-        .btn-enter {
-            margin-top: 20px;
-            padding: 12px 35px;
-            background-color: var(--accent-earth);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-enter:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            padding-top: 80px; /* Evita que o cabeçalho fixo cubra o conteúdo */
         }
 
         /* Cabeçalho do Concessionário */
@@ -89,8 +39,10 @@
             position: fixed;
             width: 100%;
             top: 0;
+            left: 0;
             z-index: 900;
             border-bottom: 3px solid var(--earth-brown);
+            backdrop-filter: blur(5px);
         }
 
         header h1 {
@@ -106,7 +58,7 @@
         /* Seção Principal - Slider Estilo Concessionária de Carros */
         .hero-slider {
             position: relative;
-            height: 100vh;
+            height: calc(100vh - 80px);
             width: 100%;
             overflow: hidden;
             display: flex;
@@ -116,13 +68,13 @@
         /* Imagem de Fundo com Movimento Parallax Real */
         .slider-bg {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: -5%;
+            left: -5%;
             width: 110%; /* Maior que a tela para permitir o movimento */
-            height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%), url('https://unsplash.com') no-repeat center center/cover;
+            height: 110%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%), url('https://unsplash.com') no-repeat center center/cover;
             z-index: 1;
-            transform: translateX(0);
+            transition: transform 0.1s ease-out;
         }
 
         .slider-content {
@@ -143,7 +95,7 @@
         .slider-content p {
             font-size: 1.3rem;
             margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             padding: 15px;
             border-left: 5px solid var(--light-green);
             border-radius: 0 10px 10px 0;
@@ -151,7 +103,7 @@
 
         /* Seção Informativa do Agrinho 2026 */
         .info-section {
-            padding: 80px 10px;
+            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -177,7 +129,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            padding: 20px;
         }
 
         .card {
@@ -186,15 +137,16 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border-bottom: 5px solid var(--light-green);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .card-img {
-            height: 200px;
+            height: 220px;
             background-size: cover;
             background-position: center;
         }
@@ -223,23 +175,27 @@
             border-top: 4px solid var(--earth-brown);
             font-size: 0.9rem;
         }
+
+        /* Responsividade Básica */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            .slider-content h2 {
+                font-size: 2.3rem;
+            }
+            .slider-content p {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Tela de Entrada com Imagem Agrícola Separada -->
-    <div class="intro-overlay" id="introOverlay">
-        <div class="intro-box">
-            <h2>Bem-vindo ao Projeto Agrinho 2026</h2>
-            <p style="margin-top: 15px;">Explore a nossa plataforma dedicada ao desenvolvimento tecnológico e ambiental do campo.</p>
-            <button class="btn-enter" onclick="enterSite()">Entrar na Plataforma</button>
-        </div>
-    </div>
-
-    <!-- Menu Superior Superior Tipo Concessionária -->
+    <!-- Menu Superior Tipo Concessionária -->
     <header>
         <h1>AGRINHO <span>2026</span></h1>
-        <p style="color: white; font-weight: bold; border: 1px solid var(--earth-brown); padding: 5px 15px; border-radius: 20px;">Edição Especial</p>
+        <p style="color: white; font-weight: bold; border: 1px solid var(--earth-brown); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">Edição Especial</p>
     </header>
 
     <!-- Hero Section com Imagem de Fundo Dinâmica Interativa -->
@@ -269,8 +225,8 @@
             <div class="card">
                 <div class="card-img" style="background-image: url('https://unsplash.com');"></div>
                 <div class="card-content">
-                    <h3>Inovação & Programação</h3>
-                    <p>Estimulando o pensamento crítico e tecnológico através das categorias de Robótica e Programação, integrando alunos e a comunidade escolar à realidade do agronegócio moderno.</p>
+                    <h3>Inovação Tecnológica</h3>
+                    <p>Uso de inteligência artificial, drones e sensores inteligentes para otimizar os recursos do campo, reduzindo o desperdício e maximizando a produtividade de forma ecológica.</p>
                 </div>
             </div>
 
@@ -278,18 +234,27 @@
             <div class="card">
                 <div class="card-img" style="background-image: url('https://unsplash.com');"></div>
                 <div class="card-content">
-                    <h3>Conexão Campo e Cidade</h3>
-                    <p>Promovendo a conscientização sobre a origem dos alimentos e mostrando como as ações ecológicas tomadas nas propriedades rurais impactam diretamente a vida nos centros urbanos.</p>
+                    <h3>Impacto Educacional</h3>
+                    <p>Conectando escolas e produtores locais para conscientizar as novas gerações sobre a importância do agronegócio moderno com responsabilidade social e ambiental.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Rodapé -->
     <footer>
-        <p>&copy; 2026 Concurso Agrinho - Categoria Programação & Robótica. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Agrinho - Todos os direitos reservados. Cultivando um futuro melhor através da educação e sustentabilidade.</p>
     </footer>
 
+    <!-- Script de Interatividade Parallax -->
     <script>
-        // Função para remover a tela agrícola de boas-vindas ao clicar
-        function enterSite() {
-            const overlay = document.getElementById('introOverlay');
+        function moveBackground(event) {
+            const bg = document.getElementById('movingBg');
+            // Calcula o movimento com base na posição do mouse
+            const x = (event.clientX / window.innerWidth) * -20; 
+            const y = (event.clientY / window.innerHeight) * -20;
+            bg.style.transform = `translate(${x}px, ${y}px)`;
+        }
+    </script>
+</body>
+</html>
