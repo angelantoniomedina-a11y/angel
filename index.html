@@ -3,244 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 - Conexão e Inovação</title>
+    <title>Agrinho 2026 - Agricultura Sustentável</title>
     <style>
+        /* Paleta de Cores Agrícolas */
         :root {
-            --verde-suave: #7bb87a;
-            --verde-escuro: #276a38;
-            --terra-cota: #d98344;
-            --fundo-claro: #faf9f6;
-            --texto-suave: #3a4b3d;
-            --branco: #ffffff;
+            --primary-green: #1b4332; /* Verde floresta escuro */
+            --light-green: #2d6a4f;   /* Verde folha sustentável */
+            --accent-earth: #b7094c;  /* Detalhes de destaque */
+            --earth-brown: #a67c52;   /* Tom de terra fértil */
+            --bg-light: #f4f9f4;      /* Fundo claro ecológico */
+            --text-dark: #2d3142;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--fundo-claro);
-            color: var(--texto-suave);
-            margin: 0;
-            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
         }
 
-        header {
-            background: linear-gradient(135deg, var(--verde-escuro), var(--verde-suave));
+        /* Efeito de carregamento / Imagem Agrícola Inicial */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://unsplash.com') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
             color: white;
+            transition: opacity 1s ease, visibility 1s;
+        }
+
+        .intro-overlay.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .intro-box {
             text-align: center;
-            padding: 60px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            border: 3px solid var(--light-green);
+            background: rgba(27, 67, 50, 0.85);
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        .btn-enter {
+            margin-top: 20px;
+            padding: 12px 35px;
+            background-color: var(--accent-earth);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-enter:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Cabeçalho do Concessionário */
+        header {
+            background-color: rgba(27, 67, 50, 0.95);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 900;
+            border-bottom: 3px solid var(--earth-brown);
         }
 
         header h1 {
-            margin: 0;
-            font-size: 3em;
-            letter-spacing: 1.5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            color: white;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
         }
 
-        header p {
-            margin-top: 15px;
-            font-size: 1.3em;
-            opacity: 0.95;
+        header span {
+            color: var(--earth-brown);
         }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
+        /* Seção Principal - Slider Estilo Concessionária de Carros */
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Imagem de Fundo com Movimento Parallax Real */
+        .slider-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 110%; /* Maior que a tela para permitir o movimento */
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%), url('https://unsplash.com') no-repeat center center/cover;
+            z-index: 1;
+            transform: translateX(0);
+        }
+
+        .slider-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 0 10%;
+            max-width: 800px;
+        }
+
+        .slider-content h2 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .slider-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-left: 5px solid var(--light-green);
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Seção Informativa do Agrinho 2026 */
+        .info-section {
+            padding: 80px 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--earth-brown);
+            margin: 10px auto 0;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             padding: 20px;
         }
 
-        /* Sistema de Abas Interativas */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-
-        .tab-btn {
-            background-color: var(--branco);
-            border: 2px solid var(--verde-suave);
-            color: var(--verde-escuro);
-            padding: 12px 24px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background-color: var(--verde-escuro);
-            color: white;
-            border-color: var(--verde-escuro);
-            box-shadow: 0 4px 12px rgba(39, 106, 56, 0.3);
-        }
-
-        .tab-content {
-            display: none;
-            background: var(--branco);
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            animation: fadeIn 0.5s ease;
-            line-height: 1.7;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .tab-content h2 {
-            color: var(--verde-escuro);
-            margin-top: 0;
-        }
-
-        /* Imagens e Estilos Visuais */
-        .img-destaque {
-            width: 100%;
-            max-height: 350px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        /* Estilo do Quiz Interativo */
-        .quiz-container {
-            background: #f1faee;
-            padding: 25px;
+        .card {
+            background: white;
             border-radius: 12px;
-            border-left: 8px solid var(--terra-cota);
-            margin-top: 25px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom: 5px solid var(--light-green);
+            transition: transform 0.3s;
         }
 
-        .quiz-options button {
-            display: block;
-            width: 100%;
-            background: var(--branco);
-            border: 1px solid var(--verde-suave);
-            padding: 15px;
-            margin: 12px 0;
-            text-align: left;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.05em;
-            color: var(--texto-suave);
-            transition: all 0.2s ease;
+        .card:hover {
+            transform: translateY(-5px);
         }
 
-        .quiz-options button:hover {
-            background: rgba(123, 184, 122, 0.2);
-            border-color: var(--verde-escuro);
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
         }
 
-        #quiz-result {
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 1.2em;
-            padding: 10px;
-            border-radius: 6px;
-            display: none;
+        .card-content {
+            padding: 25px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .card-content h3 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
         }
 
         footer {
-            text-align: center;
-            padding: 40px;
-            margin-top: 80px;
-            background-color: var(--verde-escuro);
+            background-color: var(--primary-green);
             color: white;
+            text-align: center;
+            padding: 30px;
+            border-top: 4px solid var(--earth-brown);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Agrinho 2026 🌾</h1>
-        <p>Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente</p>
-    </header>
 
-    <div class="container">
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'projeto')">O Projeto</button>
-            <button class="tab-btn" onclick="openTab(event, 'tecnologia')">Tecnologia no Campo</button>
-            <button class="tab-btn" onclick="openTab(event, 'interativo')">Desafio Interativo</button>
-        </div>
-
-        <div id="projeto" class="tab-content active">
-            <h2>Nossa Proposta para o Agrinho 2026</h2>
-            <p>Neste ano, o tema central do Agrinho nos desafia a refletir sobre como podemos produzir alimentos de qualidade preservando a natureza. Nossa turma buscou mapear as principais necessidades da nossa comunidade local, desenvolvendo práticas que unem inovação e sustentabilidade.</p>
-            
-            <img src="https://unsplash.com" alt="Plantação verde e sustentável" class="img-destaque">
-
-            <p><strong>Escola:</strong> Nome da Sua Instituição<br>
-            <strong>Integrantes:</strong> Nome dos Alunos e Orientadores.</p>
-        </div>
-
-        <div id="tecnologia" class="tab-content">
-            <h2>A Importância da Tecnologia no Agro</h2>
-            <p>O campo está cada vez mais conectado! O uso de automação, Inteligência Artificial, sensores inteligentes e métodos sustentáveis ajudam a economizar recursos vitais como a água e aumentam a produtividade de forma limpa.</p>
-
-            <img src="https://unsplash.com" alt="Tecnologia e inovação no campo" class="img-destaque">
-
-            <p>Através da inovação pedagógica, mostramos que é possível garantir a segurança alimentar sem esquecer a responsabilidade com o meio ambiente e com o futuro do nosso planeta.</p>
-        </div>
-
-        <div id="interativo" class="tab-content">
-            <h2>Teste seus Conhecimentos!</h2>
-            <p>Criamos este pequeno simulado interativo para testar o que as pessoas sabem sobre a sustentabilidade e a produção no campo.</p>
-            
-            <div class="quiz-container">
-                <p id="quiz-question"><strong>Pergunta:</strong> Qual das práticas abaixo ajuda diretamente a economizar água na agricultura e manter o solo saudável?</p>
-                <div class="quiz-options">
-                    <button onclick="checkAnswer(false)">A) Irrigação contínua por inundação em horários de sol forte.</button>
-                    <button onclick="checkAnswer(true)">B) Uso de irrigação por gotejamento direto na raiz da planta.</button>
-                    <button onclick="checkAnswer(false)">C) Retirada total da cobertura vegetal morta do solo.</button>
-                </div>
-                <div id="quiz-result"></div>
-            </div>
+    <!-- Tela de Entrada com Imagem Agrícola Separada -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-box">
+            <h2>Bem-vindo ao Projeto Agrinho 2026</h2>
+            <p style="margin-top: 15px;">Explore a nossa plataforma dedicada ao desenvolvimento tecnológico e ambiental do campo.</p>
+            <button class="btn-enter" onclick="enterSite()">Entrar na Plataforma</button>
         </div>
     </div>
 
+    <!-- Menu Superior Superior Tipo Concessionária -->
+    <header>
+        <h1>AGRINHO <span>2026</span></h1>
+        <p style="color: white; font-weight: bold; border: 1px solid var(--earth-brown); padding: 5px 15px; border-radius: 20px;">Edição Especial</p>
+    </header>
+
+    <!-- Hero Section com Imagem de Fundo Dinâmica Interativa -->
+    <section class="hero-slider" onmousemove="moveBackground(event)">
+        <div class="slider-bg" id="movingBg"></div>
+        <div class="slider-content">
+            <h2>Agro forte, futuro sustentável.</h2>
+            <p>O equilíbrio perfeito entre a eficiência produtiva no campo e a preservação rigorosa do meio ambiente através da tecnologia e inovação pedagógica.</p>
+        </div>
+    </section>
+
+    <!-- Seção de Informações Oficiais -->
+    <section class="info-section">
+        <h2 class="section-title">O que é o Agrinho 2026?</h2>
+        
+        <div class="grid-cards">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://unsplash.com');"></div>
+                <div class="card-content">
+                    <h3>Agricultura Sustentável</h3>
+                    <p>O tema central deste ano foca em práticas que garantem a segurança alimentar global ao mesmo tempo que protegem os recursos hídricos, reduzem a pegada de carbono e regeneram o solo.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://unsplash.com');"></div>
+                <div class="card-content">
+                    <h3>Inovação & Programação</h3>
+                    <p>Estimulando o pensamento crítico e tecnológico através das categorias de Robótica e Programação, integrando alunos e a comunidade escolar à realidade do agronegócio moderno.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://unsplash.com');"></div>
+                <div class="card-content">
+                    <h3>Conexão Campo e Cidade</h3>
+                    <p>Promovendo a conscientização sobre a origem dos alimentos e mostrando como as ações ecológicas tomadas nas propriedades rurais impactam diretamente a vida nos centros urbanos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>© 2026 Projeto Agrinho - Desenvolvido no GitHub Pages</p>
+        <p>&copy; 2026 Concurso Agrinho - Categoria Programação & Robótica. Todos os direitos reservados.</p>
     </footer>
 
     <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
-            
-            tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-            
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-
-        function checkAnswer(isCorrect) {
-            var resultDiv = document.getElementById("quiz-result");
-            resultDiv.style.display = "block";
-            
-            if (isCorrect) {
-                resultDiv.innerHTML = "🎉 Correto! O gotejamento evita a evaporação excessiva e direciona a água exatamente onde a planta necessita.";
-                resultDiv.style.color = "#276a38";
-                resultDiv.style.backgroundColor = "#d4edda";
-            } else {
-                resultDiv.innerHTML = "❌ Tente novamente! Essa prática pode gerar grande desperdício ou prejudicar a qualidade do solo.";
-                resultDiv.style.color = "#a52a2a";
-                resultDiv.style.backgroundColor = "#f8d7da";
-            }
-        }
-    </script>
-</body>
-</html>
+        // Função para remover a tela agrícola de boas-vindas ao clicar
+        function enterSite() {
+            const overlay = document.getElementById('introOverlay');
